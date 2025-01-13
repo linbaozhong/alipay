@@ -50,11 +50,11 @@ type SystemOauthTokenRsp struct {
 }
 
 func (s *SystemOauthTokenRsp) IsSuccess() bool {
-	return s.AccessToken != "" && s.UserId != ""
+	return s.AccessToken != "" || s.UserId != ""
 }
 
 func (s *SystemOauthTokenRsp) IsFailure() bool {
-	return s.AccessToken == "" || s.UserId == ""
+	return s.AccessToken == "" && s.UserId == ""
 }
 
 // UserInfoShare 支付宝会员授权信息查询接口请求参数 https://docs.open.alipay.com/api_2/alipay.user.info.share
@@ -80,6 +80,7 @@ type UserInfoShareRsp struct {
 	Error
 	AuthNo             string `json:"auth_no"`
 	UserId             string `json:"user_id"`
+	OpenId             string `json:"open_id"`
 	Avatar             string `json:"avatar"`
 	Province           string `json:"province"`
 	City               string `json:"city"`
@@ -89,7 +90,7 @@ type UserInfoShareRsp struct {
 	UserStatus         string `json:"user_status"`
 	IsCertified        string `json:"is_certified"`
 	Gender             string `json:"gender"`
-	Username           string `json:"user_name"` //https://open.alipay.com/portal/forum/post/59001014?ant_source=opendoc_recommend
+	Username           string `json:"user_name"` // https://open.alipay.com/portal/forum/post/59001014?ant_source=opendoc_recommend
 	CertNo             string `json:"cert_no"`
 	CertType           string `json:"cert_type"`
 	Mobile             string `json:"mobile"`
