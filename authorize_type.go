@@ -81,6 +81,7 @@ type UserInfoShareRsp struct {
 	AuthNo             string `json:"auth_no"`
 	UserId             string `json:"user_id"`
 	OpenId             string `json:"open_id"`
+	UnionId            string `json:"union_id"`
 	Avatar             string `json:"avatar"`
 	Province           string `json:"province"`
 	City               string `json:"city"`
